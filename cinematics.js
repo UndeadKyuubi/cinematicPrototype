@@ -51,7 +51,7 @@ class Menu extends Phaser.Scene {
         let menuText = this.add.text(0, 0)
             .setOrigin(0.5)
             .setText("Time Two")
-            .setStyle({ fontSize: `${60}px`, fontFamily: '"Press Start 2P"', color: '#ffffff' })
+            .setStyle({ fontSize: `${60}px`, fontFamily: '"Press Start 2P"', color: '#ffffff' });
 
         let playOn = false;
         let playButton = this.add.text(0, 200)
@@ -89,10 +89,21 @@ class Placeholder extends Phaser.Scene {
         .setOrigin(0.5)
         .setStyle({ fontSize: `${60}px`, fontFamily: '"Press Start 2P"', color: '#ffffff' });
 
-        this.add.text(centerX, centerY+200, "Restart?")
+        restartOn = false;
+        restartButton = this.add.text(centerX, centerY+200, "Restart?")
         .setOrigin(0.5)
         .setStyle({ fontSize: `${32}px`, fontFamily: '"Press Start 2P"', color: '#ffffff' })
         .setInteractive()
+        .on('pointerover', () => {
+            restartButton.setTint(0x808080);
+            restartOn = true;
+        })
+        .on('pointerout', () => {
+            if (playOn) {
+                restartButton.setTint(0xffffff);
+                restartOn = false;
+            }
+        })
         .once('pointerdown', () => {
             // only perform this action once per level restart
             this.scene.start('loading');
