@@ -26,11 +26,6 @@ class Loading extends Phaser.Scene {
     }
 
     create() {
-        // this.add.text(0, 0)
-        // .setStyle({ fontSize: `${60}px`, fontFamily: '"Press Start 2P"', color: '#ffffff' })
-        // .setText("test")
-        // .setAlpha(0);
-
         this.scene.start('menu');
     }
 
