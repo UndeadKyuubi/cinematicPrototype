@@ -1,20 +1,36 @@
+let loadingConfig = {
+    key: 'loading',
+    pack: {
+        files: [{
+            type: 'plugin',
+            key: 'rexwebfontloaderplugin',
+            url: 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexwebfontloaderplugin.min.js',
+            start: true
+        }]
+    }
+};
+
 class Loading extends Phaser.Scene {
     constructor() {
-        super('loading');
+        super(loadingConfig);
     }
 
     preload() {
-        this.load.css('fontStyles', './assets/styles.css');
-  this.load.rexWebFont({
-    custom: {
-      families: ['CustomFont'],
-      urls: ['./assets/styles.css']
-
+        this.plugins.get('rexwebfontloaderplugin').addToScene(this);
+        let config = {
+            google: {
+                families: ['Press Start 2P']
+            }
+        };
+        this.load.rexWebFont(config);
     }
-})
-}
 
     create() {
+        // this.add.text(0, 0)
+        // .setStyle({ fontSize: `${60}px`, fontFamily: '"Press Start 2P"', color: '#ffffff' })
+        // .setText("test")
+        // .setAlpha(0);
+
         this.scene.start('menu');
     }
 
@@ -91,7 +107,7 @@ const cinematics = new Phaser.Game({
         height: 1080,  
         backgroundColor: '#000000'      
     },
-    scene: [Menu, Loading, Placeholder],
+    scene: [Loading, Menu, Placeholder],
     title: "Cinematics Prototype",
 })
 
