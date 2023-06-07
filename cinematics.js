@@ -89,8 +89,8 @@ class Placeholder extends Phaser.Scene {
         .setOrigin(0.5)
         .setStyle({ fontSize: `${60}px`, fontFamily: '"Press Start 2P"', color: '#ffffff' });
 
-        restartOn = false;
-        restartButton = this.add.text(centerX, centerY+200, "Restart?")
+        let restartOn = false;
+        let restartButton = this.add.text(centerX, centerY+200, "Restart?")
         .setOrigin(0.5)
         .setStyle({ fontSize: `${32}px`, fontFamily: '"Press Start 2P"', color: '#ffffff' })
         .setInteractive()
@@ -99,7 +99,7 @@ class Placeholder extends Phaser.Scene {
             restartOn = true;
         })
         .on('pointerout', () => {
-            if (playOn) {
+            if (restartOn) {
                 restartButton.setTint(0xffffff);
                 restartOn = false;
             }
