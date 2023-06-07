@@ -11,7 +11,7 @@ class Loading extends Phaser.Scene {
       urls: ['./assets/styles.css']
 
     }
-});
+})
 }
 
     create() {
