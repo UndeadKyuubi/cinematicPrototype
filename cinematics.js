@@ -23,10 +23,16 @@ class Loading extends Phaser.Scene {
             }
         };
         this.load.rexWebFont(config);
+        this.load.path = './assets/';
+        this.load.image('logo', 'logo.jpg');
     }
 
     create() {
-        this.scene.start('menu');
+        this.add.image(1920 *.5, 1080 *.5, 'logo').setScale(.75);
+        this.time.delayedCall(2000, () =>{
+            this.scene.start('menu');
+        })
+        
     }
 
 }
